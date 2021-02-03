@@ -14,7 +14,7 @@ type search, to show all existing words/phrases, type list to show all current e
 
 class Language:
     def __init__(self):
-        self.langdict = {"hello" : "hej"}
+        self.langdict = {}
 
     def add(self, key, definition):
         self.langdict[key] = definition
@@ -38,7 +38,7 @@ class Language:
         i=1
         for key,value in self.langdict.items():
             
-            print(i + ". " + key + " | " + value + "\n")
+            print(str(i) + ". " + key + " | " + value)
             i+= 1
 
 lang1 = input(response["Langsel1"])
@@ -51,6 +51,7 @@ while x != "exit":
         original = input(response["Lang1"])
         translation = input(response["Lang2"])
         langdict.add(original, translation)
+
     elif x == "search":
         a = input(response["Select"] + lang1 + " or " + lang2 + "?\n")
         word = input(response["Search"])
@@ -60,12 +61,14 @@ while x != "exit":
             langdict.valsearch(word)
         else:
             print(response["Error"])
+
     elif x == "list":
         langdict.display()
     elif x == "help":
         print(response["Help"])
     else:    
         print(response["Error"])
+        
     x = input(response["Next"])
 
 
